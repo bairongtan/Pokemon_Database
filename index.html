@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Project</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="wrapper" >
@@ -20,7 +21,22 @@
                 </div>
             </div>
             <div class="right_section box">
-                <h3>Pokemon Information</h3>
+                <div>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+                    <figure class="highcharts-figure">
+                        <div id="container"></div>
+                        <p class="highcharts-description">
+                        Pie charts are very popular for showing a compact overview of a
+                        composition or comparison. While they can be harder to read than
+                        column charts, they remain a popular choice for small datasets.
+                    </p>
+                    </figure>
+
+                  </div>                  
             </div>
         </div>
     </div>
