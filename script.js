@@ -1,8 +1,9 @@
-async function getPokemonData (){
-    const url = 'https://pokeapi.co/api/v2/pokemon/mudkip';
+async function getFoodInspectionData (){
+    const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
     const data = await fetch (url);
-    const json = await data.json();
-    return json;
+    const foodData = await data.json();
+    const storedFoodData = JSON.stringify(foodData)
+    console.log(storedFoodData);
 }
 
 // Data retrieved from https://netmarketshare.com
