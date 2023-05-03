@@ -2,24 +2,26 @@ async function getWebsiteBreachData (){
   const url = 'https://haveibeenpwned.com/api/v2/breaches';
   const data = await fetch (url);
   const bData = await data.json();
-  //const storedBData = JSON.stringify(bData)
+
   //console.log(bData);
   console.log("loaded data")
   countDataClasses(bData);
+  //initChart(chart);
 }
 
 //async function getWebsiteBreachData (){
 //const loadDataButton = document.querySelector('#data_load');
-
 //loadDataButton.addEventListener('click', async (SubmitEvent) => {
   //console.log("loaded data");
   //const url = 'https://haveibeenpwned.com/api/v2/breaches';
   //const data = await fetch (url);
   //const bData = await data.json();
   //countDataClasses(bData);
-//});
+  //initChart(bData);
+//}
+//)};
 
-function countDataClasses (bData){
+async function countDataClasses (bData){
 let countClasses = {
   "emailAddresses" : 0,
   "passwords": 0,
@@ -49,29 +51,60 @@ bData.forEach(element => {
   }
 
 });
-  console.log(countClasses)
-  return countClasses;
+  //console.log(countClasses)
+  const dataArray = Object.values(countClasses);
+  console.log(dataArray);
+  return dataArray;
+
 //return an array of numbers
 }
 
-const ctx = document.getElementById('myChart');
+const chart = document.querySelector('myChart');
 
-new Chart(ctx, {
-type: 'bar',
-data: {
-  labels: ['Email Addresses', 'Passwords', 'Phone Numbers', 'IP Addresses', 'Names', 'Physical Addresses'],
-  datasets: [{
-    label: '# of Votes',
-    data: countDataClasses(bData),
-    //data: [1,2,3,4,5],
+async function initChart(bData, chart){
+  const labels = [
+    'Email Addresses',
+    'Passwords',
+    'Phone Numbers',
+    'IP Addresses',
+    'Names',
+    'Physical Addresses'
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: countDataClasses(bData),
     borderWidth: 2
-  }]
-},
-options: {
-  scales: {
-    y: {
-      beginAtZero: true
-    }
-  }
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+  };
+
+  return new Chart(
+    chart,
+    config
+  );
+
 }
-});
+
+//new Chart(ctx, {
+//type: 'bar',
+//data: {
+  //labels: ['Email Addresses', 'Passwords', 'Phone Numbers', 'IP Addresses', 'Names', 'Physical Addresses'],
+  //datasets: [{
+    //label: '# of Votes',
+    //data: dataArray,
+    //data: [1,2,3,4,5],
+    //borderWidth: 2
+  //}]
+//},
+//options: {
+  //scales: {
+    //y: {
+      //beginAtZero: true
+    //}
+  //}
+//}
+//});
