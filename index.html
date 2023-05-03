@@ -5,25 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Project</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     <div class="wrapper" >
         <header class="header">
-            <h1>Food Inspection Database</h1>
+            <h1>Website Breaches Database</h1>
         </header>
         <div class="container">
             <div class="left_section box">
                 <h3>Filter by keyword</h3>
                 <div>
-                    <label for="">Load Food Inspection Data</label>
-                    <button type="button" id="dataLoad" onclick="getFoodInspectionData()">Load Data</button>
+                    <label for="">Website Breach Data</label>
+                    <button type="button" id="dataLoad" onclick="getWebsiteBreachData()">Load Data</button>
+                </div>
+                <div>
+                    <label for="year">Select a year</label>
+                    <select name="" id="">
+                    <option value="">2022</option>
+                    <option value="">2021</option>
+                    <option value="">2020</option>
+                    <option value="">2019</option>
+
+                    </select>
+
+                </div>
+                <div>
+                    <button type="button" id="filterData">Filter Data</button>
                 </div>
             </div>
             <div class="right_section box">
                 <div>
-
-                  </div>                  
+                    <canvas id="myChart"></canvas>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             </div>
         </div>
     </div>

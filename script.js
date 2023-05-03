@@ -1,73 +1,31 @@
-async function getFoodInspectionData (){
-    const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-    const data = await fetch (url);
-    const foodData = await data.json();
-    const storedFoodData = JSON.stringify(foodData)
-    console.log(storedFoodData);
+async function getWebsiteBreachData (){
+  const url = 'https://haveibeenpwned.com/api/v2/breaches';
+  const data = await fetch (url);
+  const bData = await data.json();
+  const storedBData = JSON.stringify(bData)
+  console.log(storedBData);
+  console.log("loaded data")
 }
 
-// Data retrieved from https://netmarketshare.com
-Highcharts.chart('container', {
-    chart: {
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false,
-      type: 'pie'
-    },
-    title: {
-      text: 'Browser market shares in May, 2020',
-      align: 'left'
-    },
-    tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-      point: {
-        valueSuffix: '%'
-      }
-    },
-    plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: 'pointer',
-        dataLabels: {
-          enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-        }
-      }
-    },
-    series: [{
-      name: 'Brands',
-      colorByPoint: true,
-      data: [{
-        name: 'Chrome',
-        y: 70.67,
-        sliced: true,
-        selected: true
-      }, {
-        name: 'Edge',
-        y: 14.77
-      }, {
-        name: 'Firefox',
-        y: 4.86
-      }, {
-        name: 'Safari',
-        y: 2.63
-      }, {
-        name: 'Internet Explorer',
-        y: 1.53
-      }, {
-        name: 'Opera',
-        y: 1.40
-      }, {
-        name: 'Sogou Explorer',
-        y: 0.84
-      }, {
-        name: 'QQ',
-        y: 0.51
-      }, {
-        name: 'Other',
-        y: 2.6
-      }]
-    }]
-  });
+
+
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+type: 'scatter',
+data: {
+  labels: ['Email Addresses', 'IP Addresses', 'Names', 'Passwords', 'Phone Numbers', 'Genders'],
+  datasets: [{
+    label: '# of Votes',
+    data: [12, 19, 3, 5, 2, 3],
+    borderWidth: 1
+  }]
+},
+options: {
+  scales: {
+    y: {
+      beginAtZero: true
+    }
+  }
+}
+});
