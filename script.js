@@ -3,10 +3,10 @@ async function getWebsiteBreachData (){
   const data = await fetch (url);
   const bData = await data.json();
 
-  //console.log(bData);
+  console.log(bData);
   console.log("loaded data")
   countDataClasses(bData);
-  //initChart(chart);
+  initChart(bData,chart);
 }
 
 //async function getWebsiteBreachData (){
@@ -61,7 +61,7 @@ bData.forEach(element => {
 
 const chart = document.querySelector('myChart');
 
-async function initChart(bData, chart){
+async function initChart(array, chart){
   const labels = [
     'Email Addresses',
     'Passwords',
@@ -73,7 +73,7 @@ async function initChart(bData, chart){
 
   const data = {
     labels: labels,
-    datasets: countDataClasses(bData),
+    datasets: countDataClasses(bdata),
     borderWidth: 2
   };
 
