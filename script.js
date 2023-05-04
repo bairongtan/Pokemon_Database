@@ -34,7 +34,7 @@ async function mainEvent() {
     const data = await fetch(url);
     const bData = await data.json();
     const dataArray = await countDataClasses(bData);
-    const chart = document.querySelector('myChart');
+    const chart = document.getElementById('myChart');
     initChart(dataArray, chart);
   });
 }
