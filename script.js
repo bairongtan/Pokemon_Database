@@ -12,7 +12,7 @@ async function getWebsiteBreachData (){
 
 async function test(){
   const testButton = document.querySelector('#filterData');
-  testButton.addEventListener('click', async (submitEvent)=>{
+  testButton.addEventListener('click', async ()=>{
     console.log('test');
   });
 }
