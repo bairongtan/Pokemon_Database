@@ -1,4 +1,5 @@
 async function getWebsiteBreachData (){
+  const chart = document.querySelector('#myChart');
   const url = 'https://haveibeenpwned.com/api/v2/breaches';
   const data = await fetch (url);
   const bData = await data.json();
@@ -6,20 +7,21 @@ async function getWebsiteBreachData (){
   console.log(bData);
   console.log("loaded data")
   countDataClasses(bData);
-  initChart(bData,chart);
+  initChart(chart);
 }
 
-//async function getWebsiteBreachData (){
-//const loadDataButton = document.querySelector('#data_load');
-//loadDataButton.addEventListener('click', async (SubmitEvent) => {
-  //console.log("loaded data");
-  //const url = 'https://haveibeenpwned.com/api/v2/breaches';
-  //const data = await fetch (url);
-  //const bData = await data.json();
-  //countDataClasses(bData);
-  //initChart(bData);
+
+//async function mainEvent(){
+  //const loadDataButton = document.querySelector('#data_load');
+  //loadDataButton.addEventListener('click', async (submitEvent) =>{
+    //console.log('load data');
+    //const url = 'https://haveibeenpwned.com/api/v2/breaches';
+    //const data = await fetch (url);
+    //const bData = await data.json();
+    //countDataClasses(bData);
+    //initChart(bData);
+  //});
 //}
-//)};
 
 async function countDataClasses (bData){
 let countClasses = {
@@ -59,9 +61,8 @@ bData.forEach(element => {
 //return an array of numbers
 }
 
-const chart = document.querySelector('myChart');
 
-async function initChart(array, chart){
+async function initChart(chart){
   const labels = [
     'Email Addresses',
     'Passwords',
@@ -73,13 +74,14 @@ async function initChart(array, chart){
 
   const data = {
     labels: labels,
-    datasets: countDataClasses(bdata),
+    datasets: dataArray,
     borderWidth: 2
   };
 
   const config = {
     type: 'bar',
     data: data,
+    options:{},
   };
 
   return new Chart(
