@@ -27,7 +27,7 @@ clicker.addEventListener('click', (evt) => {
 
 
 async function mainEvent() {
-  const loadDataButton = document.querySelector('#data_load');
+  const loadDataButton = document.querySelector('.data_load');
   loadDataButton.addEventListener('click', async () => {
     console.log("load data");
     const url = 'https://haveibeenpwned.com/api/v2/breaches';
