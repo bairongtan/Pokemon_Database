@@ -107,22 +107,4 @@ async function initChart(dataArray, chart) {
   );
 }
 
-//new Chart(ctx, {
-//type: 'bar',
-//data: {
-  //labels: ['Email Addresses', 'Passwords', 'Phone Numbers', 'IP Addresses', 'Names', 'Physical Addresses'],
-  //datasets: [{
-    //label: '# of Votes',
-    //data: dataArray,
-    //data: [1,2,3,4,5],
-    //borderWidth: 2
-  //}]
-//},
-//options: {
-  //scales: {
-    //y: {
-      //beginAtZero: true
-    //}
-  //}
-//}
-//});
+document.addEventListener('DOMContentLoaded', async () => mainEvent());
