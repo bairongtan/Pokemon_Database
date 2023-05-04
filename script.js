@@ -1,33 +1,43 @@
-async function getWebsiteBreachData (){
-  const chart = document.querySelector('#myChart');
-  const url = 'https://haveibeenpwned.com/api/v2/breaches';
-  const data = await fetch (url);
-  const bData = await data.json();
+//async function getWebsiteBreachData (){
+  //const chart = document.querySelector('#myChart');
+  //const url = 'https://haveibeenpwned.com/api/v2/breaches';
+  //const data = await fetch (url);
+  //const bData = await data.json();
 
-  console.log(bData);
-  console.log("loaded data")
-  countDataClasses(bData);
-  initChart(chart);
-}
+  //console.log(bData);
+  //console.log("loaded data")
+  //countDataClasses(bData);
+  //initChart(chart);
+//}
 
-async function test(){
-  const testButton = document.querySelector('#filterData');
-  testButton.addEventListener('click', async ()=>{
-    console.log('test');
+
+const testButton = document.querySelector('.filterData');
+
+testButton.addEventListener('click', (evt)=>{
+  console.log('test')
+})
+
+
+
+const clicker = document.querySelector(".clickme");
+
+clicker.addEventListener('click', (evt) => {
+   console.log('click registered')
+})
+
+
+async function mainEvent() {
+  const loadDataButton = document.querySelector('.data_load');
+  loadDataButton.addEventListener('click', async () => {
+    console.log("load data");
+    const url = 'https://haveibeenpwned.com/api/v2/breaches';
+    const data = await fetch(url);
+    const bData = await data.json();
+    const dataArray = await countDataClasses(bData);
+    const chart = document.querySelector('myChart');
+    initChart(dataArray, chart);
   });
 }
-
-//async function mainEvent(){
-  //const loadDataButton = document.querySelector('#data_load');
-  //loadDataButton.addEventListener('click', async (submitEvent) =>{
-    //console.log('load data');
-    //const url = 'https://haveibeenpwned.com/api/v2/breaches';
-    //const data = await fetch (url);
-    //const bData = await data.json();
-    //countDataClasses(bData);
-    //initChart(bData);
-  //});
-//}
 
 async function countDataClasses (bData){
 let countClasses = {
@@ -68,7 +78,7 @@ bData.forEach(element => {
 }
 
 
-async function initChart(chart){
+async function initChart(dataArray, chart) {
   const labels = [
     'Email Addresses',
     'Passwords',
@@ -80,21 +90,21 @@ async function initChart(chart){
 
   const data = {
     labels: labels,
-    datasets: dataArray,
-    borderWidth: 2
+    datasets: [{
+      label: 'Number of Breaches',
+      data: dataArray,
+    }]
   };
 
   const config = {
     type: 'bar',
     data: data,
-    options:{},
   };
 
   return new Chart(
     chart,
     config
   );
-
 }
 
 //new Chart(ctx, {
