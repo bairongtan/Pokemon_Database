@@ -10,6 +10,12 @@ async function getWebsiteBreachData (){
   initChart(chart);
 }
 
+async function test(){
+  const testButton = document.querySelector('#filterData');
+  testButton.addEventListener('click', async (submitEvent)=>{
+    console.log('test');
+  });
+}
 
 //async function mainEvent(){
   //const loadDataButton = document.querySelector('#data_load');
