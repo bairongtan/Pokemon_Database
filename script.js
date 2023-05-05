@@ -13,7 +13,8 @@
 async function mainEvent() {
   const loadDataButton = document.querySelector('.data_load');
   const filterDataButton = document.querySelector('.filterData');
-  const year = document.querySelector('.year');
+  var temp = document.querySelector("select");
+  const year = temp.value;
 
   let bData = [];
 
@@ -37,13 +38,22 @@ async function mainEvent() {
 }
 
 async function filterYear(bData,year){
-  console.log('filter data')
+  //let year1 = "2022";
+  newData = [];
+  //console.log(year); 
+  const nYear = JSON.stringify(year);
+  console.log('type of nYear is ',typeof nYear);
+  console.log(nYear);
+
+  //console.log('filter data')
   bData.forEach(element =>{
-    if(element.BreachData.includes(year)){
-      bData.pop();
+    if(element.BreachDate.includes(nYear)){
+      newData.push(element);
+      console.log('element',element);
     }
-    return bData;
   })
+  console.log(newData);
+  return newData;
 }
 
 async function countDataClasses (bData){
