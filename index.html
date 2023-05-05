@@ -17,16 +17,15 @@
                 <h3>Filter by keyword</h3>
                 <div>
                     <label for="">Website Breach Data</label>
-                    <button class="clickme">Click Me</button>
                     <button class="data_load" >Load Data</button>
                 </div>
                 <div>
                     <label for="year">Select a year</label>
-                    <select name="" id="">
-                    <option value="">2022</option>
-                    <option value="">2021</option>
-                    <option value="">2020</option>
-                    <option value="">2019</option>
+                    <select name="year" class="year">
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
 
                     </select>
 
@@ -36,7 +35,7 @@
                 </div>
             </div>
             <div class="right_section box">
-                <div>
+                <div class="chart_container">
                     <canvas id="myChart"></canvas>
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

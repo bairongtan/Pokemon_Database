@@ -382,3 +382,8 @@
     }
     
     #map { height: 180px; }
+
+    .chart_container{
+      height: 100%;
+      width: 100%;
+    }

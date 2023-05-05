@@ -11,23 +11,12 @@
 //}
 
 
-const testButton = document.querySelector('.filterData');
-
-testButton.addEventListener('click', (evt)=>{
-  console.log('test')
-})
-
-
-
-const clicker = document.querySelector(".clickme");
-
-clicker.addEventListener('click', (evt) => {
-   console.log('click registered')
-})
 
 
 async function mainEvent() {
   const loadDataButton = document.querySelector('.data_load');
+  const filterDataButton = document.querySelector('.filterData');
+  const year = document.querySelector('.year');
   loadDataButton.addEventListener('click', async () => {
     console.log("load data");
     const url = 'https://haveibeenpwned.com/api/v2/breaches';
@@ -37,6 +26,16 @@ async function mainEvent() {
     const chart = document.getElementById('myChart');
     initChart(dataArray, chart);
   });
+
+
+  filterDataButton.addEventListener('click', async() => {
+    console.log('filter data')
+    bData.forEach(element =>{
+      if(element.BreachDate.match(year)){
+        bData.pop()
+      }
+    })
+  })
 }
 
 async function countDataClasses (bData){
@@ -97,7 +96,7 @@ async function initChart(dataArray, chart) {
   };
 
   const config = {
-    type: 'bar',
+    type: 'pie',
     data: data,
   };
 
