@@ -10,31 +10,39 @@
   //initChart(chart);
 //}
 
-
-
-
 async function mainEvent() {
   const loadDataButton = document.querySelector('.data_load');
   const filterDataButton = document.querySelector('.filterData');
   const year = document.querySelector('.year');
+
+  let bData = [];
+
   loadDataButton.addEventListener('click', async () => {
     console.log("load data");
     const url = 'https://haveibeenpwned.com/api/v2/breaches';
     const data = await fetch(url);
-    const bData = await data.json();
+
+    bData = await data.json();
+    
     const dataArray = await countDataClasses(bData);
     const chart = document.getElementById('myChart');
     initChart(dataArray, chart);
   });
 
 
-  filterDataButton.addEventListener('click', async() => {
-    console.log('filter data')
-    bData.forEach(element =>{
-      if(element.BreachDate.match(year)){
-        bData.pop()
-      }
-    })
+  filterDataButton.addEventListener('click', (event) => {
+    console.log('filter clicked')
+    filterYear(bData,year);
+  })
+}
+
+async function filterYear(bData,year){
+  console.log('filter data')
+  bData.forEach(element =>{
+    if(element.BreachData.includes(year)){
+      bData.pop();
+    }
+    return bData;
   })
 }
 
