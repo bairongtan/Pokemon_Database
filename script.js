@@ -1,20 +1,11 @@
-//async function getWebsiteBreachData (){
-  //const chart = document.querySelector('#myChart');
-  //const url = 'https://haveibeenpwned.com/api/v2/breaches';
-  //const data = await fetch (url);
-  //const bData = await data.json();
-
-  //console.log(bData);
-  //console.log("loaded data")
-  //countDataClasses(bData);
-  //initChart(chart);
-//}
-
 async function mainEvent() {
   const loadDataButton = document.querySelector('.data_load');
   const filterDataButton = document.querySelector('.filterData');
+
   var temp = document.querySelector("select");
-  const year = temp.value;
+  const year = temp.options[temp.selectedIndex].value;
+
+  const chart = document.getElementById('myChart');
 
   let bData = [];
 
@@ -22,18 +13,18 @@ async function mainEvent() {
     console.log("load data");
     const url = 'https://haveibeenpwned.com/api/v2/breaches';
     const data = await fetch(url);
-
     bData = await data.json();
     
     const dataArray = await countDataClasses(bData);
-    const chart = document.getElementById('myChart');
     initChart(dataArray, chart);
   });
 
 
   filterDataButton.addEventListener('click', (event) => {
     console.log('filter clicked')
-    filterYear(bData,year);
+    //filterYear(bData,year);
+    const newArray = filterYear(bData,year);
+    initChart(newArray,chart);
   })
 }
 
@@ -47,9 +38,9 @@ async function filterYear(bData,year){
 
   //console.log('filter data')
   bData.forEach(element =>{
-    if(element.BreachDate.includes(nYear)){
+    if(element.BreachDate.includes("2020")){
       newData.push(element);
-      console.log('element',element);
+      //console.log('element',element);
     }
   })
   console.log(newData);
