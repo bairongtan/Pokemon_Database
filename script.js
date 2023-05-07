@@ -4,8 +4,6 @@ async function mainEvent() {
   const loadDataButton = document.querySelector('.data_load');
   const filterDataButton = document.querySelector('.filterData');
 
-  var temp = document.querySelector("select");
-  const year = temp.options[temp.selectedIndex].value;
 
   const chart = document.getElementById('myChart');
 
@@ -24,6 +22,8 @@ async function mainEvent() {
 
 
   filterDataButton.addEventListener('click', (event) => {
+    var temp = document.querySelector("select");
+    const year = temp.options[temp.selectedIndex].value;
     console.log('filter clicked')
     //filterYear(bData,year);
     const newArray = filterYear(bData,year);
@@ -37,12 +37,13 @@ async function filterYear(bData,year){
   newData = [];
   //console.log(year); 
   const nYear = JSON.stringify(year);
-  console.log('type of nYear is ',typeof nYear);
+  //console.log('type of nYear is ',typeof nYear);
+  console.log(isNaN(nYear))
   console.log(nYear);
 
   //console.log('filter data')
   bData.forEach(element =>{
-    if(element.BreachDate.includes("2020")){
+    if(element.BreachDate.includes(nYear)){
       newData.push(element);
       //console.log('element',element);
     }
@@ -116,7 +117,6 @@ async function initChart(dataArray, chart) {
   if (myChart) {
     myChart.destroy();
   }
-
   myChart = new Chart(chart, config);
 
 }
