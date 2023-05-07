@@ -1,3 +1,5 @@
+let myChart;
+
 async function mainEvent() {
   const loadDataButton = document.querySelector('.data_load');
   const filterDataButton = document.querySelector('.filterData');
@@ -8,6 +10,7 @@ async function mainEvent() {
   const chart = document.getElementById('myChart');
 
   let bData = [];
+
 
   loadDataButton.addEventListener('click', async () => {
     console.log("load data");
@@ -24,6 +27,7 @@ async function mainEvent() {
     console.log('filter clicked')
     //filterYear(bData,year);
     const newArray = filterYear(bData,year);
+    //chart.destroy();
     initChart(newArray,chart);
   })
 }
@@ -109,10 +113,12 @@ async function initChart(dataArray, chart) {
     data: data,
   };
 
-  return new Chart(
-    chart,
-    config
-  );
+  if (myChart) {
+    myChart.destroy();
+  }
+
+  myChart = new Chart(chart, config);
+
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
