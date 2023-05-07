@@ -54,7 +54,7 @@ function filterYear(bData,year){
   return newData;
 }
 
-async function countDataClasses (bData){
+function countDataClasses (bData){
 let countClasses = {
   "emailAddresses" : 0,
   "passwords": 0,
