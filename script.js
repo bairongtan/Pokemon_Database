@@ -38,14 +38,14 @@ function filterYear(bData,year){
   //let year1 = "2022";
   newData = [];
   //console.log(year); 
-  const nYear = JSON.stringify(year);
+  //const nYear = JSON.stringify(year);
   //console.log('type of nYear is ',typeof nYear);
-  console.log(isNaN(nYear))
-  console.log(nYear);
+  //console.log(isNaN(nYear))
+  console.log(year);
 
   //console.log('filter data')
   bData.forEach(element =>{
-    if(element.BreachDate.includes("2019")){
+    if(element.BreachDate.includes(year)){
       newData.push(element);
       //console.log('element',element);
     }
