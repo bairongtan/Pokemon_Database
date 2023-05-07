@@ -26,13 +26,15 @@ async function mainEvent() {
     const year = temp.options[temp.selectedIndex].value;
     console.log('filter clicked')
     //filterYear(bData,year);
-    const newArray = filterYear(bData,year);
+    const newData = filterYear(bData,year);
+    const filteredArray = countDataClasses(newData);
+    console.log(filteredArray);
     //chart.destroy();
-    initChart(newArray,chart);
+    initChart(filteredArray,chart);
   })
 }
 
-async function filterYear(bData,year){
+function filterYear(bData,year){
   //let year1 = "2022";
   newData = [];
   //console.log(year); 
@@ -43,7 +45,7 @@ async function filterYear(bData,year){
 
   //console.log('filter data')
   bData.forEach(element =>{
-    if(element.BreachDate.includes(nYear)){
+    if(element.BreachDate.includes("2019")){
       newData.push(element);
       //console.log('element',element);
     }
