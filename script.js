@@ -32,8 +32,13 @@ async function mainEvent() {
     console.log('filter clicked')
     const newData = filterYear(bData,year);
     const filteredArray = countDataClasses(newData);
+
+    /* Filtered Local Storage */
+    localStorage.setItem('storedFilter', filteredArray);
+    const storedFilter = localStorage.getItem('storedFilter');
+    console.log(storedFilter.split(','));
     //console.log(filteredArray);
-    initChart(filteredArray,chart);
+    initChart(storedFilter.split(','),chart);
   });
 
   clearDataButton.addEventListener("click", (event) => {
