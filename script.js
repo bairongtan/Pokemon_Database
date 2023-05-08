@@ -3,11 +3,9 @@ let myChart;
 async function mainEvent() {
   const loadDataButton = document.querySelector('.data_load');
   const filterDataButton = document.querySelector('.filterData');
-
-
   const chart = document.getElementById('myChart');
+  const clearDataButton = document.querySelector('.data_clear');
 
-  let bData = [];
 
 
   loadDataButton.addEventListener('click', async () => {
@@ -17,7 +15,14 @@ async function mainEvent() {
     bData = await data.json();
     
     const dataArray = await countDataClasses(bData);
-    initChart(dataArray, chart);
+
+    /* Local Storage */
+    localStorage.setItem('storedData', dataArray);
+    //console.log(localStorage.getItem('storedData'));
+    const localData = localStorage.getItem('storedData');
+    console.log(localData.split(','));
+
+    initChart(localData.split(','), chart);
   });
 
 
@@ -25,29 +30,29 @@ async function mainEvent() {
     var temp = document.querySelector("select");
     const year = temp.options[temp.selectedIndex].value;
     console.log('filter clicked')
-    //filterYear(bData,year);
     const newData = filterYear(bData,year);
     const filteredArray = countDataClasses(newData);
-    console.log(filteredArray);
-    //chart.destroy();
+    //console.log(filteredArray);
     initChart(filteredArray,chart);
-  })
+  });
+
+  clearDataButton.addEventListener("click", (event) => {
+    console.log('clear data');
+    localStorage.clear();
+    console.log('localStorage Check', localStorage.getItem("storedData"))
+  });
+
 }
 
 function filterYear(bData,year){
-  //let year1 = "2022";
+
   newData = [];
-  //console.log(year); 
-  //const nYear = JSON.stringify(year);
-  //console.log('type of nYear is ',typeof nYear);
-  //console.log(isNaN(nYear))
+
   console.log(year);
 
-  //console.log('filter data')
   bData.forEach(element =>{
     if(element.BreachDate.includes(year)){
       newData.push(element);
-      //console.log('element',element);
     }
   })
   console.log(newData);
@@ -122,5 +127,6 @@ async function initChart(dataArray, chart) {
   myChart = new Chart(chart, config);
 
 }
+
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
