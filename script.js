@@ -10,18 +10,24 @@ async function mainEvent() {
 
   loadDataButton.addEventListener('click', async () => {
     console.log("load data");
-    const url = 'https://haveibeenpwned.com/api/v2/breaches';
-    const data = await fetch(url);
-    bData = await data.json();
-    
-    const dataArray = await countDataClasses(bData);
-
-    /* Local Storage */
-    localStorage.setItem('storedData', dataArray);
-    //console.log(localStorage.getItem('storedData'));
-    const localData = localStorage.getItem('storedData');
-    console.log(localData.split(','));
-
+  
+    let localData = localStorage.getItem('storedData');
+  
+    if (!localData) {
+      const url = 'https://haveibeenpwned.com/api/v2/breaches';
+      const data = await fetch(url);
+      bData = await data.json();
+  
+      const dataArray = await countDataClasses(bData);
+  
+      /* Local Storage */
+      localStorage.setItem('storedData', dataArray);
+      localData = localStorage.getItem('storedData');
+      console.log(localData.split(','));
+    } else {
+      console.log("Data already in localStorage:", localData.split(','));
+    }
+  
     initChart(localData.split(','), chart);
   });
 
