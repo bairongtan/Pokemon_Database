@@ -30,7 +30,7 @@
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    background-color: #E5FFDE;
+    background-color: #DEE7E7;
   }
   
   
@@ -41,6 +41,8 @@
   
   h2, h3 {
     color: #1241ec;
+    font-family: 'Lucida Sans';
+    font-size: 1.4rem;
     margin:0;
     padding:0;
     padding-bottom:1.5rem;
@@ -93,14 +95,14 @@
     /* this will push other blocks out of the way */
   
     /* colors */
-    background-color: #736B92;
-    color: #ebdede;
+    background-color: #99E1D9;
+    color: #252a2c;
   
     /* shapes */
-  
+    font-family: 'Lucida Sans';
     border: 2px dashed;
     border-radius: 6px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     padding: 1.25rem;
     margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
   
@@ -137,7 +139,7 @@
   }
   
   .left_section {
-    background-color: #BBCBCB;
+    background-color: #F4FAFF;
     flex: 0 1 auto;
     margin: 1rem;
     padding: 1.5rem;
@@ -145,7 +147,7 @@
   }
   
   .right_section {
-    background-color: #9590A8;
+    background-color: #F4FAFF;
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;
@@ -154,11 +156,6 @@
     flex-direction: column;
   }
   
-  /*
-    This block is actually dependent on the "container" block having a flex set on it
-    and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
-    That serves to cram the footer to the bottom of the page.
-  */
   
   .footer {
     border: 3px dashed;
@@ -193,7 +190,51 @@
     margin-bottom: 5px;
   }
   
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+  }
   
+  .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+  }
+  
+  .button2:hover {
+    background-color: #008CBA;
+    color: white;
+  }
+  
+  .button3 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f44336;
+  }
+  
+  .button3:hover {
+    background-color: #f44336;
+    color: white;
+  }
   /* Deploy this with images as direct "children" and the images should pop into shape */
   .grid {
     display: flex;
@@ -210,102 +251,6 @@
   }
   
   
-  /* Carousel */
-  div.carousel {
-    max-width: 300px;
-    overflow: hidden;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-  }
-  
-  .carousel .slides {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* .carousel_item, */
-  .hidden {
-    display: none;
-  }
-  
-  .visible {
-    display: block;
-  }
-  
-  .carousel_item img {
-    /* 
-      Setting width, rather than max-width or min-width,
-      means annoying pop-ins won't happen
-      but it also means you need to format your images to be compatible
-      or they will stretch weird
-  
-      - try a tall one and see what happens
-      - change the height on a fixed image size and see what happens
-      - now make sure that images are _always_ square
-      - ... there's a reason crop tools are popular in image editors
-     */
-    width: 150px; 
-  }
-  
-  .prev,
-  .next {
-    border: none;
-    margin: 2px;
-    text-align: center;
-    border-radius: 5px;
-    font-weight: bold;
-    height: 45px;
-    padding: 10px;
-    line-height: 0; /* This centers a button's text! */
-    border: 2px solid rgb(99,99,99); /* shorthand for how to do a border */
-  }
-  
-  .prev:focus,
-  .next:focus {
-    margin: 0;
-    /* Pick a good border colour and check out how it works with your buttons */
-  }
-  
-  .prev:hover,
-  .next:hover {
-    /* Pick a good background colour for your hover pseudoclass */
-  }
-  
-  /*
-  Form Styles
-  */
-  
-  form input {
-      /* This is a hack to make sure our boxes line up with one another nicely */
-      width: 100%;
-      width: -moz-available;          /* WebKit-based browsers will ignore this. */
-      width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-      width: fill-available;
-  
-      /* here we are setting white space correctly */
-      margin-bottom: 1rem;
-      height: 2rem;
-      border-radius: 4px;
-    }
-  
-  form label {
-    width: 100%;
-    width: -moz-available;          /* WebKit-based browsers will ignore this. */
-    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-    width: fill-available;
-    align-items: flex-start;
-  
-    display: block; /* this turns the label text into a box we can set margins on */
-    margin-bottom: 0.5rem;
-  }
   
   /* How To Write A Media Query For Small Screens */
   
@@ -319,71 +264,39 @@
         align-items: center;
         
       }
+
+      .image{
+        width: 240px;
+        height: 160px;
+      }
   
       .right_section {
+        flex: 1 2 auto;
+        justify-content: flex-start;
         align-items: flex-start;
       }
-  }
-  
-  .lds-ellipsis {
-      display: inline-block;
-      position: relative;
-      width: 80px;
-      height: 80px;
-    }
-    .lds-ellipsis div {
-      position: absolute;
-      top: 33px;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #fff;
-      animation-timing-function: cubic-bezier(0, 1, 1, 0);
-    }
-    .lds-ellipsis div:nth-child(1) {
-      left: 8px;
-      animation: lds-ellipsis1 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(2) {
-      left: 8px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(3) {
-      left: 32px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(4) {
-      left: 56px;
-      animation: lds-ellipsis3 0.6s infinite;
-    }
-    @keyframes lds-ellipsis1 {
-      0% {
-        transform: scale(0);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    @keyframes lds-ellipsis3 {
-      0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(0);
-      }
-    }
-    @keyframes lds-ellipsis2 {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(24px, 0);
-      }
-    }
-    
-    #map { height: 180px; }
 
-    .chart_container{
-      height: 100%;
-      width: 100%;
-    }
+      .left_section{
+
+        flex: 0 1 auto;
+        align-items: center;
+      }
+
+      .box{
+        width: 100%;
+        width: -moz-available;
+        width: -webkit-fill-available;
+        width: fill-available;
+        align-items: flex-start;       
+      }
+      .chart_container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  }
+ 
+  .chart_container{
+    height: 100%;
+    width: 100%;
+  }
