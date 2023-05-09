@@ -18,7 +18,7 @@ async function mainEvent() {
     initChart(storedDataArray.split(','), chart);
   } else {
     console.log('Data not in local storage, press load data button');
-    await loadData(); // Call loadData function if data is not in local storage
+     // Call loadData function if data is not in local storage
   }
 
 
@@ -60,6 +60,7 @@ async function mainEvent() {
   clearDataButton.addEventListener("click", (event) => {
     console.log('clear data');
     localStorage.clear();
+    location.reload();
     console.log('localStorage Check', localStorage.getItem("storedData"))
   });
 
