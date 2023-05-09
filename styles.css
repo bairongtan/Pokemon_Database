@@ -161,13 +161,13 @@
     border: 3px dashed;
     flex-shrink: 0;
     padding: 1rem;
-    background-color: #bd8ec3;
+    background-color: #8EE3EF;
     font-size: 1.2rem;
     font-weight: 600;
   }
   
   .footer a {
-    color: rgb(106, 197, 228);
+    color: #252a2c;
     text-decoration: underline;
   }
   
