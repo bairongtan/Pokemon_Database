@@ -6,30 +6,40 @@ async function mainEvent() {
   const chart = document.getElementById('myChart');
   const clearDataButton = document.querySelector('.data_clear');
 
+  let bData; 
+
+  
+  const storedData = localStorage.getItem('storedData');
+  const storedDataArray = localStorage.getItem('storedDataArray');
+
+  if (storedData && storedDataArray) {
+    console.log('Using data from local storage');
+    bData = JSON.parse(storedData); // Update bData with stored data
+    initChart(storedDataArray.split(','), chart);
+  } else {
+    console.log('Data not in local storage, press load data button');
+    await loadData(); // Call loadData function if data is not in local storage
+  }
 
 
   loadDataButton.addEventListener('click', async () => {
-    console.log("load data");
-  
-    let localData = localStorage.getItem('storedData');
-  
-    if (!localData) {
-      const url = 'https://haveibeenpwned.com/api/v2/breaches';
-      const data = await fetch(url);
-      bData = await data.json();
-  
-      const dataArray = await countDataClasses(bData);
-  
-      /* Local Storage */
-      localStorage.setItem('storedData', dataArray);
-      localData = localStorage.getItem('storedData');
-      console.log(localData.split(','));
-    } else {
-      console.log("Data already in localStorage:", localData.split(','));
-    }
-  
-    initChart(localData.split(','), chart);
+    await loadData(); // Call loadData function when loadDataButton is clicked
   });
+
+  async function loadData() {
+    console.log("load data");
+    const url = 'https://haveibeenpwned.com/api/v2/breaches';
+    const data = await fetch(url);
+    bData = await data.json();
+  
+    const dataArray = await countDataClasses(bData);
+  
+    /* Local Storage */
+    localStorage.setItem('storedData', JSON.stringify(bData));
+    localStorage.setItem('storedDataArray', dataArray);
+  
+    initChart(dataArray, chart);
+  }
 
 
   filterDataButton.addEventListener('click', (event) => {
