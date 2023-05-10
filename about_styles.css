@@ -1,0 +1,205 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* 
+    These rules apply to actual HTML elements with no labelling!
+    So: they style the tags directly
+  */
+  
+  html {
+    background-color: #fff;
+    font-size: 16px;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  
+    /* these are specific to different browsers */
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  
+    font-family: Lucida;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #F7FFF7;
+  }
+  
+  
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  h2, h3 {
+    color: #252a2c;
+    font-family: 'Lucida Sans';
+    font-size: 1.4rem;
+    margin:0;
+    padding:0;
+    padding-bottom:1.5rem;
+  }
+  
+  form {
+    accent-color: hsla(120, 100%, 50%, 0.482);
+  }
+  
+  
+  .wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    flex: 1;
+  }
+  
+  .container {
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+    flex:1;
+  }
+  
+  .header {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  
+  
+  .header h1 {
+    display: block;
+    /* this will push other blocks out of the way */
+  
+    /* colors */
+    background-color: #B5F8FE;
+    color: #252a2c;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  
+    /* shapes */
+    font-family: 'Lucida Sans';
+    border: 2px double;
+    border-radius: 6px;
+    font-size: 2rem;
+    padding: 1.25rem;
+    margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  
+  
+    /* box-shadows are fancy */
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+  }
+
+  #map{
+    width:400px;
+    height: 380px;
+    margin-bottom: 1rem;
+  }
+  
+  
+  .box {
+    background-color: #F7EBEC;
+    border: 2.5px solid;
+    border-radius: 4px;
+  
+    width: fit-content;
+    height:fit-content;
+    padding: 1.5rem;
+    margin: 0 auto;
+  }
+  
+  .left_section {
+    background-color: #F4FAFF;
+    flex: 0 1 auto;
+    margin: 1rem;
+    padding: 1.5rem;
+  
+  }
+  
+  .footer {
+    font-family: 'Lucida Sans';
+    border: 3px double;
+    flex-shrink: 0;
+    padding: 1rem;
+    background-color: #8EE3EF;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .footer a {
+    color: #252a2c;
+    text-decoration: underline;
+  }
+  
+  /*
+    This is an example of a 'pseudoclass'
+    In this instance, it says what to do if a mouse hovers over a link
+    This is pretty desktop-specific, since there's no hover function on touchscreens
+  */
+  .footer a:hover {
+    /* Hue, saturation, luminosity, alpha */
+    background-color: hsla(0, 0%, 90%, 0.15);
+    /* red, green, blue, alpha */
+    color: rgb(246, 169, 93);
+    text-decoration: none;
+  }
+  
+  .subtitle {
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0px;
+    margin-bottom: 5px;
+  }
+  
+
+  
+  
+  /* How To Write A Media Query For Small Screens */
+  
+  @media only screen and (max-width: 736px){
+      /* Rules in here will only apply when a screen is the correct size */
+      /* check it out by using your developer tools to shrink your screen-size */
+      .container {
+        background-color: #DEE7E7;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+      }
+
+      .image{
+        width: 240px;
+        height: 160px;
+      }
+  
+      .right_section {
+        flex: 1 2 auto;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      .left_section{
+
+        flex: 0 1 auto;
+        align-items: center;
+      }
+
+      .box{
+        width: 100%;
+        width: -moz-available;
+        width: -webkit-fill-available;
+        width: fill-available;
+        align-items: flex-start;       
+      }
+
+  }
+ 
